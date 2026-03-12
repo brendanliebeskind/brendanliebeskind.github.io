@@ -43,7 +43,6 @@
     .nav-logo {
       font-family:'DM Sans',sans-serif; font-weight:600;
       font-size:0.95rem; color:var(--navy); text-decoration:none;
-      letter-spacing:0.01em;
     }
     .nav-logo span { color:var(--blue); }
     .nav-links { display:flex; gap:2.5rem; list-style:none; }
@@ -57,17 +56,15 @@
       display:flex; align-items:center; gap:0.4rem;
     }
     .nav-loc::before {
-      content:'';
-      display:inline-block; width:6px; height:6px; border-radius:50%;
-      background:var(--blue); flex-shrink:0;
+      content:''; display:inline-block; width:6px; height:6px;
+      border-radius:50%; background:var(--blue); flex-shrink:0;
     }
 
     /* HERO */
     #hero {
       min-height:100vh; display:flex; align-items:center;
       padding:0 3.5rem; padding-top:68px;
-      background:var(--bg2);
-      position:relative; overflow:hidden;
+      background:var(--bg2); position:relative; overflow:hidden;
     }
     .hero-bg-shape {
       position:absolute; right:-120px; top:-80px;
@@ -81,8 +78,7 @@
       background:var(--blue-lt); color:var(--blue);
       font-size:0.78rem; font-weight:600; letter-spacing:0.06em;
       text-transform:uppercase; padding:0.35rem 0.85rem; border-radius:100px;
-      margin-bottom:2rem;
-      animation:fadeUp 0.55s ease both;
+      margin-bottom:2rem; animation:fadeUp 0.55s ease both;
     }
     .hero-eyebrow::before {
       content:''; display:block; width:5px; height:5px;
@@ -112,10 +108,8 @@
     .btn-outline { border:1.5px solid var(--border); color:var(--navy); background:var(--bg2); }
     .btn-outline:hover { border-color:var(--blue); color:var(--blue); transform:translateY(-2px); }
 
-    /* DIVIDER */
     .divider { height:1px; background:var(--border); margin:0 3.5rem; }
 
-    /* SECTIONS */
     section { padding:6rem 3.5rem; }
     .sec-eyebrow {
       display:inline-flex; align-items:center; gap:0.5rem;
@@ -134,32 +128,61 @@
 
     /* ABOUT */
     #about { background:var(--bg2); }
-    .about-grid { display:grid; grid-template-columns:1.1fr 1fr; gap:6rem; align-items:center; max-width:1150px; }
+    .about-grid {
+      display:grid; grid-template-columns:1fr 420px;
+      gap:5rem; align-items:start; max-width:1150px;
+    }
     .about-text p { color:var(--slate); font-size:0.97rem; line-height:1.85; margin-bottom:1.2rem; }
-    .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; margin-top:2rem; }
     .stat {
       background:var(--bg); border:1px solid var(--border); border-radius:12px;
-      padding:1.75rem; transition:box-shadow 0.2s;
+      padding:1.4rem; transition:box-shadow 0.2s;
     }
     .stat:hover { box-shadow:0 4px 20px rgba(26,86,219,0.08); }
     .stat-n {
       font-family:'Playfair Display',serif; font-weight:700;
-      font-size:2.4rem; color:var(--blue); line-height:1; margin-bottom:0.4rem;
+      font-size:2rem; color:var(--blue); line-height:1; margin-bottom:0.3rem;
     }
-    .stat-l { font-size:0.8rem; font-weight:500; color:var(--muted); }
+    .stat-l { font-size:0.78rem; font-weight:500; color:var(--muted); }
+
+    /* HEADSHOT */
+    .about-photo-col { display:flex; flex-direction:column; gap:0; }
+    .headshot-wrap {
+      position:relative; border-radius:16px; overflow:hidden;
+      aspect-ratio: 4/5;
+      box-shadow:0 20px 60px rgba(11,31,58,0.14);
+    }
+    .headshot-wrap img {
+      width:100%; height:100%; object-fit:cover; object-position:center top;
+      display:block;
+    }
+    .headshot-wrap::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(to bottom, transparent 60%, rgba(11,31,58,0.18) 100%);
+      pointer-events:none;
+    }
+    .headshot-badge {
+      position:absolute; bottom:1.25rem; left:1.25rem; z-index:2;
+      background:rgba(255,255,255,0.95); backdrop-filter:blur(8px);
+      border-radius:10px; padding:0.7rem 1rem;
+      box-shadow:0 4px 16px rgba(0,0,0,0.12);
+    }
+    .headshot-badge-name {
+      font-weight:600; font-size:0.88rem; color:var(--navy); line-height:1.2;
+    }
+    .headshot-badge-title {
+      font-size:0.72rem; color:var(--blue); font-weight:500;
+    }
 
     /* PROJECTS */
     #projects { background:var(--bg); }
     .projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; max-width:1200px; }
     .card {
       background:var(--bg2); border:1px solid var(--border); border-radius:14px;
-      padding:2rem; transition:all 0.25s; overflow:hidden; position:relative;
+      padding:2rem; transition:all 0.25s;
     }
     .card:hover { box-shadow:0 12px 40px rgba(26,86,219,0.1); transform:translateY(-4px); border-color:#bfdbfe; }
-    .card-top {
-      display:flex; justify-content:space-between; align-items:flex-start;
-      margin-bottom:1.25rem;
-    }
+    .card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.25rem; }
     .card-num {
       background:var(--blue-lt); color:var(--blue);
       font-size:0.7rem; font-weight:600; letter-spacing:0.1em;
@@ -173,15 +196,11 @@
     .card-sub { font-size:0.8rem; font-weight:500; color:var(--blue); margin-bottom:1rem; }
     .card-desc { font-size:0.88rem; color:var(--slate); line-height:1.78; margin-bottom:1.5rem; }
     .tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.5rem; }
-    .tag {
-      font-size:0.74rem; font-weight:500; padding:0.22rem 0.65rem;
-      background:#f1f5f9; color:#475569; border-radius:6px;
-    }
+    .tag { font-size:0.74rem; font-weight:500; padding:0.22rem 0.65rem; background:#f1f5f9; color:#475569; border-radius:6px; }
     .card-links { display:flex; gap:1.25rem; }
     .clink {
       font-size:0.8rem; font-weight:600; color:var(--blue);
-      text-decoration:none; display:flex; align-items:center; gap:0.35rem;
-      transition:color 0.2s;
+      text-decoration:none; display:flex; align-items:center; gap:0.35rem; transition:color 0.2s;
     }
     .clink:hover { color:#1446c0; }
     .clink svg { width:12px; height:12px; flex-shrink:0; }
@@ -189,9 +208,7 @@
     /* SKILLS */
     #skills { background:var(--bg2); }
     .skills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; max-width:1100px; }
-    .sk-cat {
-      background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:1.75rem;
-    }
+    .sk-cat { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:1.75rem; }
     .sk-cat-icon { font-size:1.5rem; margin-bottom:0.85rem; }
     .sk-cat-title { font-size:0.8rem; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1rem; }
     .sk-list { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
@@ -199,10 +216,7 @@
     .sk-item::before { content:''; width:3px; height:3px; border-radius:50%; background:var(--blue); flex-shrink:0; opacity:0.6; }
 
     /* RESUME */
-    #resume {
-      background:linear-gradient(135deg,var(--navy) 0%,#1a3a6b 100%);
-      text-align:center; padding:5rem 3.5rem;
-    }
+    #resume { background:linear-gradient(135deg,var(--navy) 0%,#1a3a6b 100%); text-align:center; padding:5rem 3.5rem; }
     #resume .sec-eyebrow { color:#93c5fd; }
     #resume .sec-eyebrow::before { background:#93c5fd; }
     #resume h2.sec-title { color:#fff; margin-bottom:1rem; }
@@ -221,20 +235,14 @@
     .cl {
       display:flex; align-items:center; gap:1rem; text-decoration:none;
       padding:1.1rem 1.4rem; background:var(--bg2);
-      border:1px solid var(--border); border-radius:10px;
-      transition:all 0.2s;
+      border:1px solid var(--border); border-radius:10px; transition:all 0.2s;
     }
     .cl:hover { border-color:#bfdbfe; box-shadow:0 4px 16px rgba(26,86,219,0.08); transform:translateX(4px); }
-    .cl-icon {
-      width:36px; height:36px; border-radius:8px;
-      background:var(--blue-lt); display:flex; align-items:center; justify-content:center;
-      flex-shrink:0;
-    }
+    .cl-icon { width:36px; height:36px; border-radius:8px; background:var(--blue-lt); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
     .cl-icon svg { width:16px; height:16px; color:var(--blue); }
     .cl-label { font-size:0.72rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.1rem; }
     .cl-val { font-size:0.88rem; font-weight:500; color:var(--navy); }
 
-    /* FOOTER */
     footer {
       padding:1.5rem 3.5rem; background:var(--bg2);
       border-top:1px solid var(--border);
@@ -242,7 +250,6 @@
     }
     footer p { font-size:0.8rem; color:var(--muted); }
 
-    /* REVEAL */
     .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.55s ease, transform 0.55s ease; }
     .reveal.in { opacity:1; transform:none; }
 
@@ -256,16 +263,17 @@
       #hero, section { padding-left:1.5rem; padding-right:1.5rem; }
       .divider { margin:0 1.5rem; }
       footer { padding:1.5rem; }
-      .about-grid, .contact-grid { grid-template-columns:1fr; gap:3rem; }
+      .about-grid { grid-template-columns:1fr; gap:3rem; }
+      .about-photo-col { max-width:340px; }
       .projects-grid { grid-template-columns:1fr; }
       .skills-grid { grid-template-columns:1fr 1fr; }
+      .contact-grid { grid-template-columns:1fr; gap:3rem; }
       .nav-loc { display:none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#hero" class="nav-logo">Brendan <span>Liebeskind</span></a>
     <ul class="nav-links">
@@ -277,7 +285,6 @@
     <span class="nav-loc">Brooklyn, New York</span>
   </nav>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-bg-shape"></div>
     <div class="hero-content">
@@ -296,32 +303,40 @@
 
   <div class="divider"></div>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="sec-eyebrow">About</div>
     <div class="about-grid">
-      <div class="about-text">
+      <div class="about-text reveal">
         <h2 class="sec-title">Geospatial analyst based in Brooklyn.</h2>
         <p>I'm a GIS analyst currently completing a GIS bootcamp while self-teaching Python, building technical depth to match the spatial intuition I've developed through real-world projects.</p>
         <p>My background is five years in customer service at tech startups — which sharpened my ability to communicate complex information clearly and work closely with clients. I bring that same user-first thinking to GIS work, especially in urban planning and public transportation contexts.</p>
         <p>I'm focused on bridging data and place, understanding how spatial decisions shape the communities people live in.</p>
+        <div class="about-stats">
+          <div class="stat">
+            <div class="stat-n">4+</div>
+            <div class="stat-l">GIS Projects Completed</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">5yr</div>
+            <div class="stat-l">Tech Industry Background</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">NYC</div>
+            <div class="stat-l">Based in Brooklyn, NY</div>
+          </div>
+          <div class="stat">
+            <div class="stat-n">2</div>
+            <div class="stat-l">Live ArcGIS Web Apps</div>
+          </div>
+        </div>
       </div>
-      <div class="stats-grid reveal">
-        <div class="stat">
-          <div class="stat-n">4+</div>
-          <div class="stat-l">GIS Projects Completed</div>
-        </div>
-        <div class="stat">
-          <div class="stat-n">5yr</div>
-          <div class="stat-l">Tech Industry Background</div>
-        </div>
-        <div class="stat">
-          <div class="stat-n">NYC</div>
-          <div class="stat-l">Based in Brooklyn, NY</div>
-        </div>
-        <div class="stat">
-          <div class="stat-n">2</div>
-          <div class="stat-l">Live ArcGIS Web Apps</div>
+      <div class="about-photo-col reveal">
+        <div class="headshot-wrap">
+          <img src="headshot.png" alt="Brendan Liebeskind">
+          <div class="headshot-badge">
+            <div class="headshot-badge-name">Brendan Liebeskind</div>
+            <div class="headshot-badge-title">GIS Analyst · Brooklyn, NY</div>
+          </div>
         </div>
       </div>
     </div>
@@ -329,23 +344,17 @@
 
   <div class="divider"></div>
 
-  <!-- PROJECTS -->
   <section id="projects">
     <div class="sec-eyebrow">Projects</div>
     <h2 class="sec-title">Spatial work.</h2>
     <div class="projects-grid">
 
       <div class="card reveal">
-        <div class="card-top">
-          <span class="card-num">Project 01</span>
-          <span class="card-icon">🗺️</span>
-        </div>
+        <div class="card-top"><span class="card-num">Project 01</span><span class="card-icon">🗺️</span></div>
         <h3 class="card-title">Prince William County Potential Development Map</h3>
         <p class="card-sub">Zoning Analysis &amp; Land Use Planning</p>
         <p class="card-desc">Analyzed local zoning ordinances to identify potential development areas across Prince William County using ArcGIS Pro and custom Python/ModelBuilder workflows. Built on a geodatabase with automated processing pipelines to handle multi-layer spatial analysis at scale.</p>
-        <div class="tags">
-          <span class="tag">ArcGIS Pro</span><span class="tag">Python</span><span class="tag">ModelBuilder</span><span class="tag">Geodatabase</span><span class="tag">Zoning</span>
-        </div>
+        <div class="tags"><span class="tag">ArcGIS Pro</span><span class="tag">Python</span><span class="tag">ModelBuilder</span><span class="tag">Geodatabase</span><span class="tag">Zoning</span></div>
         <div class="card-links">
           <a href="https://www.linkedin.com/in/brendanlieb-gis-analyst/overlay/1767645272851/single-media-viewer/?profileId=ACoAABWRHbUB43ifyPUOYLASbtJxpyBViuZB9NU" target="_blank" class="clink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -355,16 +364,11 @@
       </div>
 
       <div class="card reveal">
-        <div class="card-top">
-          <span class="card-num">Project 02</span>
-          <span class="card-icon">📍</span>
-        </div>
+        <div class="card-top"><span class="card-num">Project 02</span><span class="card-icon">📍</span></div>
         <h3 class="card-title">Senior Living Facility Location Analysis</h3>
         <p class="card-sub">Brooklyn vs. Austin vs. Katy, TX</p>
         <p class="card-desc">Multi-city site selection analysis examining senior living industry growth and optimal facility locations across three metro markets. Delivered as a 13-page interactive ArcGIS Experience Builder presentation covering demographic trends, accessibility metrics, and market opportunity.</p>
-        <div class="tags">
-          <span class="tag">ArcGIS Online</span><span class="tag">Experience Builder</span><span class="tag">Site Selection</span><span class="tag">Demographics</span><span class="tag">Healthcare GIS</span>
-        </div>
+        <div class="tags"><span class="tag">ArcGIS Online</span><span class="tag">Experience Builder</span><span class="tag">Site Selection</span><span class="tag">Demographics</span><span class="tag">Healthcare GIS</span></div>
         <div class="card-links">
           <a href="https://www.linkedin.com/in/brendanlieb-gis-analyst/overlay/1770406814521/single-media-viewer/?profileId=ACoAABWRHbUB43ifyPUOYLASbtJxpyBViuZB9NU" target="_blank" class="clink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -374,16 +378,11 @@
       </div>
 
       <div class="card reveal">
-        <div class="card-top">
-          <span class="card-num">Project 03</span>
-          <span class="card-icon">🌿</span>
-        </div>
+        <div class="card-top"><span class="card-num">Project 03</span><span class="card-icon">🌿</span></div>
         <h3 class="card-title">NYC Greenspace Irrigation Prioritization</h3>
         <p class="card-sub">NDVI + Climate Analysis Web App</p>
         <p class="card-desc">Interactive web application leveraging NDVI analysis and climate data to prioritize greenspace irrigation needs across NYC parks. Integrated ChatGPT prompt engineering directly into the GIS data collection pipeline — an early example of AI-assisted spatial analysis.</p>
-        <div class="tags">
-          <span class="tag">ArcGIS Online</span><span class="tag">NDVI</span><span class="tag">Remote Sensing</span><span class="tag">AI Integration</span><span class="tag">Web App</span>
-        </div>
+        <div class="tags"><span class="tag">ArcGIS Online</span><span class="tag">NDVI</span><span class="tag">Remote Sensing</span><span class="tag">AI Integration</span><span class="tag">Web App</span></div>
         <div class="card-links">
           <a href="https://experience.arcgis.com/experience/0f44f9165dda47ca9e3cf691276a91dc" target="_blank" class="clink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -397,16 +396,11 @@
       </div>
 
       <div class="card reveal">
-        <div class="card-top">
-          <span class="card-num">Project 04</span>
-          <span class="card-icon">🏙️</span>
-        </div>
+        <div class="card-top"><span class="card-num">Project 04</span><span class="card-icon">🏙️</span></div>
         <h3 class="card-title">CIP Project Map: Geodatabase to Live Web App</h3>
         <p class="card-sub">Urban Infrastructure &amp; Capital Improvement</p>
         <p class="card-desc">End-to-end pipeline from raw geodatabase to a polished, public-facing ArcGIS Experience Builder web app. Showcases Capital Improvement Projects in spatial context, demonstrating the full workflow from data management through to live app deployment.</p>
-        <div class="tags">
-          <span class="tag">ArcGIS Online</span><span class="tag">Experience Builder</span><span class="tag">Geodatabase</span><span class="tag">CIP</span><span class="tag">Urban Infrastructure</span>
-        </div>
+        <div class="tags"><span class="tag">ArcGIS Online</span><span class="tag">Experience Builder</span><span class="tag">Geodatabase</span><span class="tag">CIP</span><span class="tag">Urban Infrastructure</span></div>
         <div class="card-links">
           <a href="https://experience.arcgis.com/experience/bbd6c776d9b145e988fccbafae548857" target="_blank" class="clink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -424,7 +418,6 @@
 
   <div class="divider"></div>
 
-  <!-- SKILLS -->
   <section id="skills">
     <div class="sec-eyebrow">Skills</div>
     <h2 class="sec-title">Toolkit.</h2>
@@ -476,7 +469,6 @@
     </div>
   </section>
 
-  <!-- RESUME -->
   <section id="resume">
     <div class="sec-eyebrow">Resume</div>
     <h2 class="sec-title">Work history.</h2>
@@ -487,7 +479,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="sec-eyebrow">Contact</div>
     <h2 class="sec-title">Let's connect.</h2>
@@ -514,20 +505,19 @@
             <div class="cl-val">brendan.a.liebeskind@gmail.com</div>
           </div>
         </a>
-        <a href="https://github.com/yourusername" target="_blank" class="cl">
+        <a href="https://github.com/brendanliebeskind" target="_blank" class="cl">
           <div class="cl-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
           </div>
           <div>
             <div class="cl-label">GitHub</div>
-            <div class="cl-val">github.com/yourusername</div>
+            <div class="cl-val">github.com/brendanliebeskind</div>
           </div>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2025 Brendan Liebeskind · Brooklyn, New York</p>
     <p>Built with GitHub Pages</p>
